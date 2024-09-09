@@ -1,0 +1,55 @@
+<section>
+  <style>
+      .table {
+          width: 60%;
+          border-collapse: collapse;
+          border: 2px solid #CCCCCC;
+
+      }
+
+      .table th , .table td{
+          border: 1px solid #C0C0C0;
+          padding: 5px;
+          text-align: left;
+      }
+
+
+      .event-row {
+
+          border: 1px solid #C0C0C0;
+
+
+      }
+
+      .event-actions {
+
+          justify-content: center;
+          border: none !important; /* Garante que a borda seja removida */
+          display: flex;
+          align-items: center;
+
+      }
+
+  </style>
+
+  <h3>Eventos</h3>
+
+  <% if current_user.admin? %> <!-- Verificar se o usuário é um administrador-->
+  <%end %>
+    <br>
+  <table class="table">
+    <% @eventos.each do |evento| %>
+      <tr class="event-row">
+       <td> <%= link_to evento.nome, evento_path(evento),class:"link"%><br> Data: <%=  evento.data %></td>
+
+        <%if current_user.admin? %><!-- Verificar se o usuário é um administrador-->
+        <td class="event-actions">
+        <%= button_to 'Editar', edit_evento_path(evento), method: :get, class:'button spacing-right'%>
+        <%= button_to 'Excluir', evento_path(evento), method: :delete, onclick: "return confirm('Você tem certeza?');",class:'button '%>
+
+          <%end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>

@@ -1,0 +1,9 @@
+//= link_tree ../images
+//= link_directory ../stylesheets .css
+//= link_tree ../../javascript .js
+//= link_tree ../../../vendor/javascript .js
+//= link tela_principal.mp4
+//= link video_globo.mp4
+//= link globo.mp4
+//= link tela.mp4
+//= link dado.mp4

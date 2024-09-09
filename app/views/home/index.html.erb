@@ -1,0 +1,42 @@
+<style>
+    .table {
+        width: 20%;
+        border-collapse: collapse;
+
+    }
+
+    .table th, .table td {
+
+        padding: 5px;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    .event-row {
+
+        align-items: center;
+
+    }
+    .event-actions {
+        gap: 10px;
+        display: flex;
+
+    }
+</style>
+
+<h3> Seja Bem-vindo!!</h3>
+
+<h1>InovaEventos foi criado para simplificar a criação e gestão de eventos, oferecendo uma plataforma intuitiva que permite não apenas a organização eficiente dos seus eventos,<br> mas também a geração e o download de certificados em formato PDF </h1>
+
+<p>Faça login para criar e gerenciar seus eventos, ou cadastre-se para participar.</p>
+
+
+  <table class="table">
+    <tr>
+    <td class="event-actions">
+  <%= button_to 'Login', new_user_session_path, method: :get, class: 'buttom' %></li>
+  <%= button_to 'Registrar', new_user_registration_path, method: :get, class:"buttom"  %></li>
+    </td>
+    </tr>
+  </table>
+
+

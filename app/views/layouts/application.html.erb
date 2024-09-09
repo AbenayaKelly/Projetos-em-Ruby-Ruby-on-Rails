@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<style >
+
+    html, body {
+
+        height: 100%; /* Garante que o HTML e o body ocupem toda a altura da tela */
+        margin: 0; /* Remove margens padrão */
+        padding: 0; /* Remove preenchimento padrão */
+
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+    .background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .video-overlay {
+          position: relative;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 200%;
+          object-fit: cover;
+        background: rgba(0, 0, 0, 0.5);/* Altere o valor alpha para ajustar a opacidade */
+          z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+      }
+    .content {
+        position:relative;
+        z-index: 1; /* Garante que o conteúdo fique acima do vídeo e da sobreposição */
+        padding: 20px; /* Ajusta o espaçamento interno para o conteúdo */
+        background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente para melhorar a legibilidade, ajuste conforme necessário */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+
+    header {
+        position: relative;
+        z-index: 2; /* Garante que o cabeçalho fique acima do vídeo e da sobreposição */
+        padding: 10px;
+        background: rgba(0, 0, 0, 0); /* Fundo semi-transparente para o cabeçalho */
+    }
+    footer {
+        position: relative;
+        background: rgba(0, 0, 0, 0); /* Ajuste conforme necessário */
+        text-align: center;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex; /* Exibe os itens em linha */
+        justify-content: right;
+    }
+    nav ul li {
+        margin-right: 15px; /* Espaçamento entre os itens */
+    }
+    nav ul li a {
+        color: #fff; /* Cor do texto do menu */
+        text-decoration: none; /* Remove o sublinhado dos links */
+    }
+    nav ul li a:hover {
+        text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    }
+</style>
+<html>
+<head>
+  <title>Gerenciador de Eventos</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %> <!-- Adiciona o CSS do template -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload',defer: true %>
+  <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %> <!-- Adiciona o JS do template -->
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+
+<div class="content">
+
+<header>
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <li><%= button_to "Cadastrar Evento", new_evento_path, method: :get, class:"button" %></li>
+          <% end %>
+          <li><%= button_to 'Eventos', eventos_path, method: :get, class: "button" %></li>
+          <li><%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "button" %>
+          </li>
+        <% end %>
+    </ul>
+  </nav>
+</header>
+  <div class="video-background">
+    <video autoplay loop muted class="background-video">
+      <source src="<%= asset_path 'dado.mp4' %>" type="video/mp4">
+
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+<%= render "shared/header"%> <!-- Incluindo cabeçalho -->
+<%= yield %>
+  <footer>
+    <%= render "shared/footer"%> <!-- Incluindo rodapé -->
+  </footer>
+
+</div>
+
+</body>
+
+</html>
+
