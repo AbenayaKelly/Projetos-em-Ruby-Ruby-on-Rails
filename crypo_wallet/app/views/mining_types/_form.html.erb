@@ -1,0 +1,27 @@
+<%= form_with(model: mining_type) do |form| %>
+  <% if mining_type.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(mining_type.errors.count, "error") %> prohibited this mining_type from being saved:</h2>
+
+      <ul>
+        <% mining_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, placeholder:"Bitcoin" %>
+  </div>
+<br>
+  <div class="form-group">
+    <%= form.label :acronym %>
+    <%= form.text_field :acronym, placeholder:"BTC" %>
+  </div>
+<br>
+  <div>
+    <%= form.submit nil,class:"button" %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<form>
+
+  <div class="form-group">
+    <%= label_tag nil, @coin.class.human_attribute_name(:description) %>
+    <%= text_field_tag nil, @coin.description, disabled:true %>
+  </div>
+  <br>
+  <div  class="form-group">
+    <%= label_tag nil,@coin.class.human_attribute_name(:acronym)%>
+    <%= text_field_tag nil,@coin.acronym, disabled:true%>
+  </div>
+  <br>
+  <div  class="form-group">
+    <%= label_tag nil,@coin.class.human_attribute_name(:url_image)%>
+    <%= text_field_tag nil, @coin.url_image, disabled:true %>
+  </div>
+  <br>
+  <div  class="form-group">
+    <%= label_tag nil, @coin.class.human_attribute_name(:mining_type) %>
+    <%= text_field_tag nil, @coin.mining_type.description, disabled:true %>
+  </div>
+
+</form>
+  <br>
+
+<div>
+  <%= link_to t("links.edit"), edit_coin_path(@coin), class:"button"%> |
+  <%= link_to t("links.back"), coins_path(@coin), class:"button" %>
+
+
+</div>

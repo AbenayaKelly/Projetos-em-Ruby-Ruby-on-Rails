@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+
+ */
+
+body {
+    background-image: url("moedas.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25px;
+}
+
+.nav-item {
+    display: inline-block;
+    margin-right: 11px; /* Espaçamento entre os itens do menu */
+
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000; /* Cor dos links */
+}
+
+/* Opcional: Estilo para os links quando hover */
+.nav-link:hover {
+    color: #007bff; /* Cor dos links ao passar o mouse */
+}
+.button{
+
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;/* cor de fundo do botão *!*/
+    color: #fff; /* cor do texto */
+    text-decoration: none; /* remover sublinhado padrão */
+    border-radius: 5px; /* bordas arredondadas */
+    border: none; /* remover borda padrão */
+    cursor: pointer; /* cursor ao passar por cima */
+    font-size: 16px; /* tamanho do texto */
+}
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 90%;
+    display: block;
+    height: 25px;
+}
+
+.form select {
+    width: 90%;
+    display: block;
+    height: 30px;
+}
+
+
+

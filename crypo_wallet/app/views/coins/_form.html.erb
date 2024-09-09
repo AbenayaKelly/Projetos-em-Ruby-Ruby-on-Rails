@@ -1,0 +1,38 @@
+<%= form_with(model: coin,local: true) do |form| %>
+  <% if coin.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>
+
+      <ul>
+        <% coin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :description%>
+    <%= form.text_field :description, placeholder:"Bitcoin" %>
+  </div>
+  <br>
+  <div  class="form-group">
+    <%= form.label :acronym%>
+    <%= form.text_field :acronym,placeholder:"BTC" %>
+  </div>
+  <br>
+  <div  class="form-group">
+    <%= form.label :url_image %>
+    <%= form.text_area :url_image,placeholder:" https://static.vecteezy.com/bitcoin.png" %>
+  </div>
+  <br>
+<div class="form">
+  <%= form.label :mining_type_id %>
+  <%= form.select("mining_type_id", @mining_type_options, { include_blank: "Selecione..."}  )%>
+</div>
+  <br>
+  <div>
+    <%= form.submit nil, class:"button" %>
+  </div>
+  <br>
+<% end %>
