@@ -1,0 +1,29 @@
+# config/locales/devise/pt-BR.yml
+pt-BR:
+  devise:
+    failure:
+      invalid: "E-mail ou senha inválidos."
+      not_found_in_database: "E-mail ou senha inválidos."
+    errors:
+      messages:
+        email:
+          blank: "Não pode ficar em branco"
+          invalid: "Não é válido"
+          taken: "Já está em uso"
+        password:
+          blank: "Não pode ficar em branco"
+          too_short: "É muito curta (mínimo é %{count} caracteres)"
+          invalid: "Não é válida"
+        password_confirmation:
+          confirmation: "Não coincide com a senha"
+          blank: "Não pode ficar em branco"
+    registrations:
+      signed_up: "Bem-vindo! Você se cadastrou com sucesso."
+      signed_up_but_inactive: "Você se cadastrou com sucesso. No entanto, não pudemos fazer login porque sua conta ainda não está ativada."
+      signed_up_but_locked: "Você se cadastrou com sucesso. No entanto, não pudemos fazer login porque sua conta está bloqueada."
+      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para seu endereço de e-mail. Por favor, siga o link para ativar sua conta."
+      update_needs_confirmation: "Você atualizou sua conta com sucesso, mas precisamos verificar seu novo endereço de e-mail. Verifique seu e-mail e siga o link de confirmação para confirmar seu novo endereço de e-mail."
+      updated: "Sua conta foi atualizada com sucesso."
+      updated_but_not_signed_in: "Sua conta foi atualizada com sucesso, mas como sua senha foi alterada, você precisa fazer login novamente."
+
+
