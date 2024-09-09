@@ -1,0 +1,140 @@
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        margin: 0;
+    }
+  .error {
+      color: #B00100;
+      font-weight: bold;
+  }
+      .field-error {
+          border: 2px solid red;
+          background-color: #ffe6e6;
+
+      }
+    .field label{
+        display: flow;
+        text-align: left;
+        right: 20px;
+        width: 20px;
+        padding: 10px;
+    }
+    .form-actions{
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        flex-direction: column;
+        text-align: left;
+
+    }
+    .button-SingUp{
+        width: 200px;
+        height: 30px;
+        background-color:#7e93d3;
+        text-align: center;
+    }
+    .button-left{
+
+        text-align: left;
+
+    }
+    .nav{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        height: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #c0c8e9;
+    }
+    .button-container{
+        display: flex;
+        justify-content: space-between;
+
+        padding-top: 10px;
+        width: 80%;
+
+
+    }
+    .button{
+        width: 200px;
+        height: 30px;
+        background-color:#7e93d3;
+        text-align: center;
+    }
+    .button-left{
+
+        text-align: left;
+
+    }
+    .button-right{
+
+        text-align: right;
+    }
+
+</style>
+<nav class="nav">
+<h2 class="Text">Cadastro</h2>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+
+    <%= f.label :Name%>
+    <div class="field">
+    <%= f.text_field :name,
+                required: true,
+                input_html: { autocomplete: "name" }%>
+    </div>
+    <br>
+    <%= f.label :Email%>
+    <div class="field">
+    <%= f.text_field :email,
+                required: true,
+                input_html: { autocomplete: "email" }%>
+    </div>
+    <br>
+    <%= f.label :Password %>
+    <div class="field">
+    <%= f.text_field :password,
+                required: true,
+                     minlength: @minimum_password_length || 6,
+                     placeholder: "#{@minimum_password_length || 6} characters minimum",
+                     autocomplete: "new-password",
+                     class: ("field-error" if @user.errors[:password].any?) %>
+      <% if @user.errors[:password].any? %>
+        <div class="error">
+          Password is too short (minimum is 6 characters)
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <%= f.label :Confirmation%>
+    <div class="field">
+    <%= f.text_field :password_confirmation,
+                required: true,
+                     placeholder:"Confirm your password",
+                     autocomplete: "new-password",
+                     class: ("field-error" if @user.errors[:password_confirmation].any?) %>
+      <% if @user.errors[:password_confirmation].any? %>
+        <div class="error">
+          doesn't match Password
+        </div>
+      <% end %>
+    </div>
+<br>
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up",class:"button-SingUp" %>
+  </div>
+<% end %>
+  <div class="button-left">
+    <%=link_to"Log in", new_session_path(resource_name) %>
+  </div>
+
+</nav>

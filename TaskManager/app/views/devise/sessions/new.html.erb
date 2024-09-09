@@ -1,0 +1,112 @@
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        margin: 0;
+    }
+    .field label{
+        display: flow;
+        text-align: left;
+        right: 20px;
+        width: 20px;
+        padding: 10px;
+    }
+    .nav{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        height: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #c0c8e9;
+    }
+
+
+    .form-actions{
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        flex-direction: column;
+        text-align: left;
+
+    }
+    .button-container{
+        display: flex;
+        justify-content: space-between;
+
+        padding-top: 10px;
+        width: 80%;
+
+
+    }
+    .button-login{
+       width: 200px;
+        height: 30px;
+       background-color:#7e93d3;
+        text-align: center;
+    }
+   .button-left{
+
+       text-align: left;
+
+   }
+    .button-right{
+
+        text-align: right;
+    }
+
+</style>
+<nav class="nav">
+<h2 class="Text">Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+
+    <%= f.label :email%>
+    <div class="field">
+    <%= f.text_field :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email", } %>
+    </div>
+    <br>
+
+    <%= f.label :password%>
+      <div class="field">
+    <%= f.text_field :password,
+                     required: false,
+                     autofocus: true,
+                     input_html: { autocomplete: "current-password" } %>
+      </div>
+
+
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+
+<br>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in", class:"button-login" %>
+  </div>
+  <% end %>
+
+    <div class="button-container">
+      <div class="button-left">
+        You are new user? <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      </div>
+      <div class="button-right">
+      <%=link_to "Forgot your password?", new_password_path(resource_name) %><br />
+      </div>
+    </div>
+    </nav>
+
+
+
+

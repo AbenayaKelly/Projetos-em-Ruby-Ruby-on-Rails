@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @task %>
+<p>
+  <strong>Completed:</strong>
+  <%= @task.completed? ? 'Sim' : 'Não' %>
+</p>
+<% unless @task.completed? %>
+  <%= link_to 'Marcar como concluída', mark_as_completed_task_path(@task), method: :patch, class: 'btn btn-success' %>
+<% end %>
+
+
+<div>
+  <%= link_to "Edit this task", edit_task_path(@task) %> |
+  <%= link_to "Back to tasks", tasks_path %>
+</div>
